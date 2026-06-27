@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Explore a comprehensive directory of over 300+ website categories and interactive blueprints. Understand modern feature requirements, complexity metrics, and stack suggestions.">
+  <title>Sharmila Technologies | Interactive Web Universe Explorer</title>
+  
+  <!-- CSS Stylesheet -->
+  <link rel="stylesheet" href="styles.css">
+  
+  <!-- Lucide Icons Library -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
+
+  <!-- Dynamic Starfield Canvas Background -->
+  <div id="starfield-container" aria-hidden="true">
+    <canvas id="starfield-canvas"></canvas>
+  </div>
+
+  <!-- Hero Section -->
+  <header>
+    <div class="container">
+      <div class="hero-tag">
+        Explore <span>36 Categories</span> | <span>300+ Ideas</span> | <span>50+ Features</span>
+      </div>
+      <h1>Welcome to <br><span class="gradient-text">Sharmila Technologies</span></h1>
+      <p class="hero-subtitle">
+        An interactive Web Universe Explorer mapping out the cosmic ecosystem of websites, SaaS platforms, and digital enterprise applications.
+      </p>
+
+      <!-- Global Search Field -->
+      <div class="search-wrapper">
+        <div class="search-input-box">
+          <i data-lucide="search" class="search-icon"></i>
+          <input type="text" id="global-search" placeholder="Search categories or website ideas (e.g. SaaS, Dental, E-Commerce)..." aria-label="Search all website categories and ideas">
+        </div>
+        <p id="search-results-count" class="search-results-meta">Showing all categories</p>
+      </div>
+
+      <!-- Interactive Quick Action Buttons -->
+      <div class="hero-actions">
+        <button id="btn-feeling-lucky" class="btn-secondary glow-purple">
+          <i data-lucide="shuffle"></i> I'm Feeling Lucky (Spin Ideas)
+        </button>
+        <button id="theme-toggle" class="btn-theme-toggle" aria-label="Toggle Theme">
+          <i data-lucide="sun" class="sun-icon"></i>
+          <i data-lucide="moon" class="moon-icon"></i>
+          <span>Toggle Theme</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Showcase content -->
+  <main class="container">
+    
+    <!-- Section 1: Categories Explorer -->
+    <section id="categories-explorer">
+      <div class="section-title-wrap">
+        <h2 class="section-title">Directory of Website Categories</h2>
+        <p class="section-subtitle">Click a category card below to inspect all 300+ sub-ideas, view custom setups, and launch the blueprint builder.</p>
+      </div>
+
+      <!-- Interactive Filter Tabs -->
+      <div class="filter-tabs-wrapper">
+        <button class="filter-tab active" data-filter="all">All Ecosystems</button>
+        <button class="filter-tab" data-filter="business">Business & Corporate</button>
+        <button class="filter-tab" data-filter="ecommerce">E-Commerce & Retail</button>
+        <button class="filter-tab" data-filter="ai-saas">AI & SaaS Engines</button>
+        <button class="filter-tab" data-filter="healthcare-gov">Healthcare & Public</button>
+        <button class="filter-tab" data-filter="utilities-mgmt">Utilities & ERPs</button>
+      </div>
+
+      <!-- Categories Grid Element -->
+      <div id="categories-grid" class="grid-container">
+        <!-- Rendered dynamically by app.js -->
+      </div>
+    </section>
+
+    <!-- Section 2: Interactive Configurator / Blueprint Generator -->
+    <section id="configurator">
+      <div class="section-title-wrap">
+        <h2 class="section-title">Interactive Blueprint Configurator</h2>
+        <p class="section-subtitle">Pick a website type and toggle modern features to dynamically estimate build complexity, system layers, and recommended technology stacks.</p>
+      </div>
+
+      <div class="configurator-layout">
+        <!-- Input Configuration Card -->
+        <div class="config-form-card">
+          <h3 class="config-form-title">Customize Project Blueprint</h3>
+          
+          <div class="form-group">
+            <label for="config-category-select" class="form-label">Category Group</label>
+            <select id="config-category-select" class="form-select">
+              <!-- Dynamically populated -->
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="config-idea-select" class="form-label">Target Website Type</label>
+            <select id="config-idea-select" class="form-select">
+              <!-- Dynamically populated -->
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Integrate Modern Features (Select Multiple)</label>
+            <div id="config-features-checklist" class="features-selector-box">
+              <!-- Dynamically populated grouped checkboxes -->
+            </div>
+          </div>
+
+          <div class="btn-generate-wrap">
+            <button id="config-btn-generate" class="btn-gradient">
+              <i data-lucide="cpu"></i> Re-Calculate Blueprint
+            </button>
+          </div>
+        </div>
+
+        <!-- Live Visual Blueprint Output -->
+        <div class="blueprint-display-wrap">
+          <div id="blueprint-card-display" class="blueprint-card">
+            <div class="blueprint-badge">Blueprint Manifest</div>
+            <h3 id="bp-title">Corporate Website</h3>
+            <p id="bp-category">Business Websites</p>
+            
+            <div class="bp-meta-grid">
+              <div class="bp-meta-item">
+                <span class="bp-meta-label">Architecture Design</span>
+                <span id="bp-arch" class="bp-meta-value">Static / CSR Client Shell</span>
+              </div>
+              <div class="bp-meta-item">
+                <span class="bp-meta-label">Database Layer</span>
+                <span id="bp-database" class="bp-meta-value">Browser LocalStorage</span>
+              </div>
+              <div class="bp-meta-item">
+                <span class="bp-meta-label">Development Cycle</span>
+                <span id="bp-timeline" class="bp-meta-value">1-2 Weeks</span>
+              </div>
+              <div class="bp-meta-item">
+                <span class="bp-meta-label">System Tier</span>
+                <span id="bp-tier" class="bp-meta-value">Micro Frontend</span>
+              </div>
+            </div>
+
+            <!-- Tech stack recommendation tags -->
+            <div class="form-group">
+              <span class="bp-meta-label">Recommended Tech Stack</span>
+              <div id="bp-stack" style="margin-top: 0.5rem;">
+                <!-- Dynamically populated tags -->
+              </div>
+            </div>
+
+            <!-- Custom features integrated tags -->
+            <div class="bp-features-box">
+              <span class="bp-meta-label" id="bp-features-count">0 Active Features</span>
+              <div id="bp-selected-features">
+                <span class="no-features-label">No custom features selected. Using core static modules.</span>
+              </div>
+            </div>
+
+            <!-- Project Complexity Progress Gauge -->
+            <div class="bp-complexity-box">
+              <div class="bp-complexity-header">
+                <span>Calculated Complexity Gauge</span>
+                <span id="bp-complexity-text">10% (5 pts)</span>
+              </div>
+              <div class="complexity-bar-bg">
+                <div id="bp-complexity-bar"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 3: Features Matrix Catalog -->
+    <section id="features-matrix" class="features-matrix-layout">
+      <div class="section-title-wrap">
+        <h2 class="section-title">Modern Feature Directory</h2>
+        <p class="section-subtitle">A collection of 50+ modern features and integration mechanisms applicable across industries.</p>
+      </div>
+
+      <div id="features-matrix-grid">
+        <!-- Populated dynamically by app.js -->
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Detailed Modal/Drawer Slide-out -->
+  <div id="drawer-overlay" aria-hidden="true"></div>
+  <aside id="details-drawer" role="dialog" aria-labelledby="drawer-title">
+    
+    <button id="drawer-close" aria-label="Close detailed drawer">
+      <i data-lucide="x"></i>
+    </button>
+    
+    <div class="drawer-header">
+      <div class="drawer-header-row">
+        <div id="drawer-icon-box"></div>
+        <h2 id="drawer-title">E-Commerce</h2>
+      </div>
+      <p id="drawer-desc">Description of the category will load here dynamically.</p>
+      
+      <!-- Quick filter within modal -->
+      <div class="drawer-search-wrap">
+        <i data-lucide="filter" class="drawer-search-icon"></i>
+        <input type="text" id="drawer-search" placeholder="Filter sub-ideas..." aria-label="Filter sub-ideas inside category">
+      </div>
+    </div>
+
+    <!-- Scrollable content lists -->
+    <div class="drawer-content">
+      <ul id="drawer-list">
+        <!-- Rendered dynamically by app.js -->
+      </ul>
+    </div>
+  </aside>
+
+  <!-- Footer Section -->
+  <footer>
+    <div class="container">
+      <p>&copy; 2026 The Web Universe Explorer. Designed with dynamic code structures.</p>
+      <p>Pair-programmed with <a href="#">Antigravity AI Coding Assistant</a>.</p>
+    </div>
+  </footer>
+
+  <!-- App Main Javascript -->
+  <script src="app.js"></script>
+</body>
+</html>
